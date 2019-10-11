@@ -1,0 +1,6 @@
+ALTER SESSION SET CURRENT_SCHEMA = XF;
+SELECT *
+FROM Country
+WHERE (SELECT SUM(Population)
+FROM City
+WHERE City.CountryID = Country.CountryID) > 400;
