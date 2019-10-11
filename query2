@@ -1,0 +1,10 @@
+ALTER SESSION SET CURRENT_SCHEMA = XF;
+
+SELECT Country.Name
+FROM Country
+LEFT JOIN City
+ON Country.CountryID = City.CountryID
+LEFT JOIN Building
+ON City.CityID = Building.CityID
+GROUP BY Country.CountryID
+HAVING COUNT(Building.Name) = 0;
